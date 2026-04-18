@@ -1,9 +1,3 @@
-# MindConnect
-MindConnect
-Here’s a clean, production-style **README.md** for your project **MindConnect – Social Counselling Platform**. It’s structured so you can directly paste into your repo.
-
----
-
 # 🧠 MindConnect – Social Counselling Platform
 
 A **microservices-based social counselling web application** where users can connect, share feelings, interact socially, and subscribe to experts for professional counselling.
@@ -15,31 +9,31 @@ A **microservices-based social counselling web application** where users can con
 MindConnect combines **social networking + mental wellness + monetized expert counselling** into one platform.
 
 Users can:
-
-* Create accounts
-* Add friends
-* Share thoughts & feelings
-* Comment and interact
-* Become experts
-* Subscribe to experts for paid counselling
+- Create accounts & manage profiles
+- Add friends & view their activity
+- Share thoughts, feelings & moods
+- Comment and like posts
+- Become certified experts
+- Subscribe to experts for paid counselling sessions
 
 ---
 
 ## 🏗️ Architecture
 
-This project follows a **Microservices Architecture** with an **API Gateway**.
+This project follows a **Microservices Architecture** with an **API Gateway** as the single entry point.
 
 ```
 mindconnect/
-├── client/                # React Frontend
+├── client/                   # React Frontend (Port 3000)
 ├── services/
-│   ├── api-gateway/      # Entry point (routing)
-│   ├── auth-service/     # Authentication (JWT)
-│   ├── user-service/     # Profiles & friendships
-│   ├── social-service/   # Posts & comments
-│   └── payment-service/  # Subscriptions (Razorpay)
-├── docker-compose.yml    # MongoDB & Redis
-├── package.json          # Root scripts
+│   ├── api-gateway/          # Entry point — routes to all services (Port 5000)
+│   ├── auth-service/         # Authentication & JWT (Port 5001)
+│   ├── user-service/         # Profiles, friends & subscriptions (Port 5002)
+│   ├── social-service/       # Posts, comments & likes (Port 5003)
+│   └── payment-service/      # Razorpay subscriptions (Port 5004)
+├── .env.example              # Environment variable template
+├── setup.sh                  # One-command install script
+├── package.json              # Root scripts (runs all services)
 └── README.md
 ```
 
@@ -47,229 +41,180 @@ mindconnect/
 
 ## ⚙️ Tech Stack
 
-### Backend
-
-* Node.js
-* Express.js
-* MongoDB (Mongoose)
-* Redis (optional caching)
-* JWT Authentication
-
-### Frontend
-
-* React.js
-* Tailwind CSS
-* Axios
-
-### DevOps
-
-* Docker & Docker Compose
-* Microservices architecture
-* API Gateway pattern
-
-### Payments
-
-* Razorpay (subscription-based)
+| Layer | Technology |
+|---|---|
+| Frontend | React 18, React Router v6, Axios, React Hot Toast |
+| Backend | Node.js, Express.js |
+| Database | MongoDB (Mongoose) |
+| Auth | JWT (JSON Web Tokens) |
+| Payments | Razorpay |
+| Architecture | Microservices + API Gateway |
 
 ---
 
 ## ✨ Features
 
 ### 👤 User Features
-
-* User registration & login (JWT)
-* Profile management
-* Add/remove friends
-* View friend activity feed
+- Register & login with JWT authentication
+- Edit profile (name, bio, avatar)
+- Search and add friends
+- Accept / decline friend requests
 
 ### 💬 Social Features
-
-* Create posts (share feelings)
-* Comment on posts
-* Like/engage system (extendable)
+- Create posts with mood tags (happy, sad, anxious, hopeful...)
+- Post anonymously
+- Add hashtag-style topic tags
+- Like and unlike posts
+- Comment on posts, delete own comments
 
 ### 🧑‍⚕️ Expert System
-
-* Upgrade to "Expert"
-* Set counselling price
-* Public expert profiles
-* Subscription-based access
+- Any user can register as an Expert
+- Set your own monthly subscription fee (₹)
+- Add specializations (Anxiety, Depression, Relationships, etc.)
+- Public expert profile visible to all users
 
 ### 💳 Payment System
-
-* Razorpay integration
-* Subscribe to experts
-* Manage active subscriptions
-
-### 🌐 API Gateway
-
-* Central routing point
-* Handles all microservices traffic
+- Razorpay integration for subscriptions
+- Demo mode works without real Razorpay keys
+- Payment history tracking
 
 ---
 
-## 🧪 Local Setup (One Command Run)
+## 🔄 Microservices & Ports
 
-### 🔧 Prerequisites
-
-* Node.js (>= 16)
-* Docker & Docker Compose
-* npm or yarn
-
----
-
-### ▶️ Installation
-
-```bash
-git clone https://github.com/your-username/mindconnect.git
-cd mindconnect
-
-npm install
-```
-
----
-
-### ▶️ Run Project
-
-```bash
-npm start
-```
-
-This will:
-
-* Start MongoDB & Redis (Docker)
-* Start all microservices
-* Start frontend
-
----
-
-### 🌍 Access App
-
-```
-Frontend: http://localhost:3000
-API Gateway: http://localhost:3000/api
-```
-
----
-
-## 🔐 Environment Variables
-
-Create `.env` in root:
-
-```
-JWT_SECRET=your_secret_key
-MONGO_URI=mongodb://localhost:27017/mindconnect
-REDIS_HOST=localhost
-RAZORPAY_KEY=your_key
-RAZORPAY_SECRET=your_secret
-```
-
----
-
-## 🔄 Microservices Ports
-
-| Service         | Port |
-| --------------- | ---- |
-| API Gateway     | 3000 |
-| Auth Service    | 3001 |
-| User Service    | 3002 |
-| Social Service  | 3003 |
-| Payment Service | 3004 |
+| Service | Port | Responsibility |
+|---|---|---|
+| React Client | 3000 | Frontend UI |
+| API Gateway | 5000 | Routes all requests from frontend |
+| Auth Service | 5001 | Register, login, JWT, expert signup |
+| User Service | 5002 | Friends, search, subscriptions |
+| Social Service | 5003 | Posts, comments, likes |
+| Payment Service | 5004 | Razorpay orders & verification |
 
 ---
 
 ## 📡 API Flow
 
 ```
-Client → API Gateway → Microservice → Database
+React Client (3000)
+      ↓
+API Gateway (5000)
+      ↓
+ ┌────┴────┬──────────┬───────────┐
+Auth     User      Social    Payment
+(5001)  (5002)    (5003)    (5004)
+      ↓
+  MongoDB
 ```
 
-Example:
+**Route examples:**
+```
+POST /api/auth/register    → Auth Service
+POST /api/auth/login       → Auth Service
+GET  /api/users/search     → User Service
+POST /api/users/friends/request/:id → User Service
+GET  /api/social/posts     → Social Service
+POST /api/social/posts     → Social Service
+POST /api/payment/create-order → Payment Service
+```
+
+---
+
+## 🧪 Local Setup
+
+### Prerequisites
+- **Node.js** >= 18  →  https://nodejs.org
+- **MongoDB** running locally  →  https://www.mongodb.com/try/download/community
+  - _Or use free MongoDB Atlas:_ https://www.mongodb.com/atlas
+
+---
+
+### Step 1 — Clone the repo
+
+```bash
+git clone https://github.com/your-username/mindconnect.git
+cd mindconnect
+```
+
+### Step 2 — Set up environment variables
+
+```bash
+cp .env.example .env
+```
+
+Open `.env` and fill in your values:
+
+```env
+MONGODB_URI=mongodb://localhost:27017/mindconnect
+JWT_SECRET=your_random_secret_here
+
+# Optional — only needed for real payments
+RAZORPAY_KEY_ID=rzp_test_your_key_here
+RAZORPAY_KEY_SECRET=your_razorpay_secret_here
+```
+
+### Step 3 — Install & run everything
+
+```bash
+bash setup.sh
+npm run dev
+```
+
+This installs all dependencies across all 5 microservices + the React client, then starts everything concurrently.
+
+### Step 4 — Open the app
 
 ```
-POST /api/auth/login → Auth Service
-GET /api/posts → Social Service
-POST /api/subscribe → Payment Service
+http://localhost:3000
+```
+
+---
+
+## 💳 Razorpay Setup (Optional)
+
+The payment service runs in **demo mode** by default — subscriptions are confirmed instantly without any real payment. To enable real payments:
+
+1. Create a free account at https://razorpay.com
+2. Get your test API keys from the dashboard
+3. Add them to your `.env`:
+```env
+RAZORPAY_KEY_ID=rzp_test_xxxxxxxxxx
+RAZORPAY_KEY_SECRET=xxxxxxxxxxxxxxxxxx
 ```
 
 ---
 
 ## 📦 Future Enhancements
 
-* 🔔 Real-time notifications (WebSockets)
-* 💬 Chat system (Socket.io)
-* 📹 Video counselling (WebRTC)
-* 🤖 AI-based mood detection
-* 🧾 Subscription analytics dashboard
+- 🔔 Real-time notifications (WebSockets / Socket.io)
+- 💬 Private chat between friends
+- 📹 Video counselling sessions (WebRTC)
+- 🤖 AI-based mood detection from post content
+- 🧾 Expert earnings & subscription analytics dashboard
+- 📱 Mobile app (React Native)
 
 ---
 
-## 🧑‍💻 Contribution
+## 🧑‍💻 Contributing
 
 1. Fork the repo
-2. Create a branch
-3. Commit changes
-4. Open a PR
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m "Add your feature"`
+4. Push to the branch: `git push origin feature/your-feature`
+5. Open a Pull Request
 
 ---
 
 ## 📜 License
 
-MIT License
+MIT License — free to use, modify and distribute.
 
 ---
 
-## 💡 Suggested Project Names (Optional Alternatives)
+## 🙌 Built With
 
-* MindConnect (current)
-* HealSpace
-* SoulCircle
-* TalkNest
-* FeelLink
-* MindBridge
-
----
-
-## 🙌 Acknowledgements
-
-* MongoDB
-* React
-* Razorpay
-* Express Community
-
----
-**Just only follow below steps to execute this project**
-cp .env.example .env   # fill in their own values
-bash setup.sh
-
----
-
-✅ What's been created
-5 Microservices (Node.js/Express)
-ServicePortResponsibilityAPI Gateway5000Routes all frontend requestsAuth Service5001Register, login, JWT, expert signupUser Service5002Friends, search, subscriptionsSocial Service5003Posts, comments, likesPayment Service5004Razorpay orders & verification
-React Frontend (Port 3000)
-
-Login / Register — with JWT auth
-Feed — create posts with mood tags, like, comment, anonymous posting
-Friends — send/accept/decline requests, search users
-Experts — browse experts, subscribe with Razorpay (demo mode works without real keys)
-Profile — edit bio, become an expert, set subscription fee
----
-🚀 How to run
-bashcd mindconnect
-
-# Install everything
-bash setup.sh
-
-# Start all services
-npm run dev
-
----
-
-Then open http://localhost:3000
-
-Requires: Node.js 18+, MongoDB running locally (or update MONGODB_URI in .env to use MongoDB Atlas free tier)
-
-
-**💳 Razorpay Setup (optional for demo)**
-The payment service works in demo mode without real keys — subscriptions are confirmed instantly. To enable real payments, add your Razorpay keys to .env.
+- [MongoDB](https://www.mongodb.com/)
+- [Express.js](https://expressjs.com/)
+- [React](https://reactjs.org/)
+- [Node.js](https://nodejs.org/)
+- [Razorpay](https://razorpay.com/)
