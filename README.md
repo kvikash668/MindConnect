@@ -243,6 +243,18 @@ cp .env.example .env   # fill in their own values
 bash setup.sh
 
 ---
+
+✅ What's been created
+5 Microservices (Node.js/Express)
+ServicePortResponsibilityAPI Gateway5000Routes all frontend requestsAuth Service5001Register, login, JWT, expert signupUser Service5002Friends, search, subscriptionsSocial Service5003Posts, comments, likesPayment Service5004Razorpay orders & verification
+React Frontend (Port 3000)
+
+Login / Register — with JWT auth
+Feed — create posts with mood tags, like, comment, anonymous posting
+Friends — send/accept/decline requests, search users
+Experts — browse experts, subscribe with Razorpay (demo mode works without real keys)
+Profile — edit bio, become an expert, set subscription fee
+---
 🚀 How to run
 bashcd mindconnect
 
