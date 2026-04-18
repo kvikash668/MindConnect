@@ -251,3 +251,13 @@ bash setup.sh
 
 # Start all services
 npm run dev
+
+---
+
+Then open http://localhost:3000
+
+Requires: Node.js 18+, MongoDB running locally (or update MONGODB_URI in .env to use MongoDB Atlas free tier)
+
+
+**💳 Razorpay Setup (optional for demo)**
+The payment service works in demo mode without real keys — subscriptions are confirmed instantly. To enable real payments, add your Razorpay keys to .env.
