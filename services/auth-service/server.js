@@ -1,31 +1,20 @@
+require('dotenv').config({ path: '../../.env' });
+const express = require('express');
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const cors = require('cors');
+const authRoutes = require('./routes/auth');
 
-const userSchema = new mongoose.Schema({
-  name:        { type: String, required: true, trim: true },
-  email:       { type: String, required: true, unique: true, lowercase: true },
-  password:    { type: String, required: true, minlength: 6 },
-  avatar:      { type: String, default: '' },
-  bio:         { type: String, default: '' },
-  isExpert:    { type: Boolean, default: false },
-  expertProfile: {
-    title:          { type: String, default: '' },
-    specialization: [String],
-    subscriptionFee:{ type: Number, default: 0 },
-    description:    { type: String, default: '' },
-    isApproved:     { type: Boolean, default: true }
-  },
-  createdAt: { type: Date, default: Date.now }
-});
+const app = express();
+const PORT = process.env.AUTH_SERVICE_PORT || 5001;
 
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
-  this.password = await bcrypt.hash(this.password, 12);
-  next();
-});
+app.use(cors());
+app.use(express.json());
 
-userSchema.methods.comparePassword = async function (candidate) {
-  return bcrypt.compare(candidate, this.password);
-};
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/mindconnect')
+  .then(() => console.log('✅ Auth Service: MongoDB connected'))
+  .catch(err => console.error('❌ MongoDB error:', err));
 
-module.exports = mongoose.model('User', userSchema);
+app.use('/', authRoutes);
+app.get('/health', (req, res) => res.json({ service: 'auth', status: 'ok' }));
+
+app.listen(PORT, () => console.log(`🔐 Auth Service running on port ${PORT}`));
