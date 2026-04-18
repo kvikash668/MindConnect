@@ -1,1 +1,19 @@
+# Dependencies - never commit these
+node_modules/
+*/node_modules/
+services/*/node_modules/
+client/node_modules/
 
+# Environment variables - contains secrets!
+.env
+
+# React build output
+client/build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
