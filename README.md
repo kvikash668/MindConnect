@@ -243,4 +243,11 @@ cp .env.example .env   # fill in their own values
 bash setup.sh
 
 ---
+🚀 How to run
+bashcd mindconnect
+
+# Install everything
+bash setup.sh
+
+# Start all services
 npm run dev
