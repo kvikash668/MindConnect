@@ -238,5 +238,9 @@ MIT License
 * Express Community
 
 ---
+**Just only follow below steps to execute this project**
+cp .env.example .env   # fill in their own values
+bash setup.sh
 
-Just tell me 👍
+---
+npm run dev
