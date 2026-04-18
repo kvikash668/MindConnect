@@ -1,1 +1,13 @@
-
+{
+  "name": "mindconnect",
+  "version": "1.0.0",
+  "description": "MindConnect - Social Counselling Platform (Microservices)",
+  "scripts": {
+    "install:all": "npm install && cd services/api-gateway && npm install && cd ../auth-service && npm install && cd ../user-service && npm install && cd ../social-service && npm install && cd ../payment-service && npm install && cd ../../client && npm install",
+    "start": "concurrently \"cd services/auth-service && npm start\" \"cd services/user-service && npm start\" \"cd services/social-service && npm start\" \"cd services/payment-service && npm start\" \"cd services/api-gateway && npm start\" \"cd client && npm start\"",
+    "dev": "concurrently --names \"AUTH,USER,SOCIAL,PAYMENT,GATEWAY,CLIENT\" --prefix-colors \"blue,green,yellow,red,magenta,cyan\" \"cd services/auth-service && npm run dev\" \"cd services/user-service && npm run dev\" \"cd services/social-service && npm run dev\" \"cd services/payment-service && npm run dev\" \"cd services/api-gateway && npm run dev\" \"cd client && npm start\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
