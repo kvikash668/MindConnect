@@ -1,0 +1,254 @@
+vikashkumar@Vikashs-MacBook-Air MindConnect % brew tap mongodb/brew
+==> Tapping mongodb/brew
+Cloning into '/opt/homebrew/Library/Taps/mongodb/homebrew-brew'...
+remote: Enumerating objects: 1800, done.
+remote: Counting objects: 100% (732/732), done.
+remote: Compressing objects: 100% (315/315), done.
+remote: Total 1800 (delta 625), reused 430 (delta 417), pack-reused 1068 (from 2)
+Receiving objects: 100% (1800/1800), 402.52 KiB | 1.81 MiB/s, done.
+Resolving deltas: 100% (1126/1126), done.
+Tapped 13 formulae (32 files, 516.4KB).
+vikashkumar@Vikashs-MacBook-Air MindConnect % brew install mongodb-community
+==> Fetching downloads for: mongodb-community
+✔︎ Bottle Manifest fmt (12.1.0)                                                                                                                                                   Downloaded    7.3KB/  7.3KB
+✔︎ Bottle Manifest ada-url (3.4.4)                                                                                                                                                Downloaded    8.7KB/  8.7KB
+✔︎ Bottle Manifest libnghttp2 (1.68.1)                                                                                                                                            Downloaded    7.3KB/  7.3KB
+✔︎ Bottle Manifest libnghttp3 (1.15.0)                                                                                                                                            Downloaded    7.3KB/  7.3KB
+✔︎ Bottle Manifest libuv (1.52.1)                                                                                                                                                 Downloaded    7.5KB/  7.5KB
+✔︎ Bottle Manifest llhttp (9.3.1)                                                                                                                                                 Downloaded    7.2KB/  7.2KB
+✔︎ Bottle llhttp (9.3.1)                                                                                                                                                          Downloaded   36.7KB/ 36.7KB
+✔︎ Bottle Manifest merve (1.2.2)                                                                                                                                                  Downloaded    9.3KB/  9.3KB
+✔︎ Bottle Manifest hdrhistogram_c (0.11.9)                                                                                                                                        Downloaded    7.8KB/  7.8KB
+✔︎ Bottle hdrhistogram_c (0.11.9)                                                                                                                                                 Downloaded   43.6KB/ 43.6KB
+✔︎ Bottle Manifest libngtcp2 (1.22.1)                                                                                                                                             Downloaded    9.7KB/  9.7KB
+✔︎ Bottle Manifest simdutf (8.2.0)                                                                                                                                                Downloaded    8.7KB/  8.7KB
+✔︎ Bottle merve (1.2.2)                                                                                                                                                           Downloaded   33.3KB/ 33.3KB
+✔︎ Bottle Manifest nbytes (0.1.4)                                                                                                                                                 Downloaded    7.3KB/  7.3KB
+✔︎ Bottle nbytes (0.1.4)                                                                                                                                                          Downloaded   13.3KB/ 13.3KB
+✔︎ Bottle Manifest simdjson (4.6.2)                                                                                                                                               Downloaded    7.3KB/  7.3KB
+✔︎ Bottle Manifest node (25.9.0_2)                                                                                                                                                Downloaded   33.7KB/ 33.7KB
+✔︎ Bottle libnghttp2 (1.68.1)                                                                                                                                                     Downloaded  214.4KB/214.4KB
+✔︎ Bottle ada-url (3.4.4)                                                                                                                                                         Downloaded  345.6KB/345.6KB
+✔︎ Bottle Manifest c-ares (1.34.6)                                                                                                                                                Downloaded    7.5KB/  7.5KB
+✔︎ Bottle c-ares (1.34.6)                                                                                                                                                         Downloaded  304.0KB/304.0KB
+✔︎ Bottle Manifest mongosh (2.8.2)                                                                                                                                                Downloaded   66.1KB/ 66.1KB
+✔︎ Bottle simdutf (8.2.0)                                                                                                                                                         Downloaded  334.9KB/334.9KB
+✔︎ Bottle libnghttp3 (1.15.0)                                                                                                                                                     Downloaded  188.8KB/188.8KB
+✔︎ Bottle fmt (12.1.0)                                                                                                                                                            Downloaded  282.9KB/282.9KB
+✔︎ Bottle libuv (1.52.1)                                                                                                                                                          Downloaded  375.7KB/375.7KB
+✔︎ Bottle libngtcp2 (1.22.1)                                                                                                                                                      Downloaded  393.2KB/393.2KB
+✔︎ Bottle simdjson (4.6.2)                                                                                                                                                        Downloaded    1.4MB/  1.4MB
+✔︎ Formula mongodb-community (8.2.7)                                                                                                                                              Verified     80.3MB/ 80.3MB
+✔︎ Formula mongodb-database-tools (100.16.0)                                                                                                                                      Verified     71.0MB/ 71.0MB
+✔︎ Bottle mongosh (2.8.2)                                                                                                                                                         Downloaded   22.4MB/ 22.4MB
+✔︎ Bottle node (25.9.0_2)                                                                                                                                                         Downloaded   18.4MB/ 18.4MB
+==> Installing mongodb-community from mongodb/brew
+==> Installing dependencies for mongodb/brew/mongodb-community: mongodb/brew/mongodb-database-tools, fmt, ada-url, c-ares, hdrhistogram_c, libnghttp2, libnghttp3, libngtcp2, libuv, llhttp, simdutf, merve, nbytes, simdjson, node and mongosh
+==> Installing mongodb/brew/mongodb-community dependency: mongodb/brew/mongodb-database-tools
+🍺  /opt/homebrew/Cellar/mongodb-database-tools/100.16.0: 16 files, 135.1MB, built in 4 seconds
+==> Installing mongodb/brew/mongodb-community dependency: fmt
+==> Pouring fmt--12.1.0.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/fmt/12.1.0: 29 files, 1MB
+==> Installing mongodb/brew/mongodb-community dependency: ada-url
+==> Pouring ada-url--3.4.4.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/ada-url/3.4.4: 55 files, 1.3MB
+==> Installing mongodb/brew/mongodb-community dependency: c-ares
+==> Pouring c-ares--1.34.6.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/c-ares/1.34.6: 176 files, 1MB
+==> Installing mongodb/brew/mongodb-community dependency: hdrhistogram_c
+==> Pouring hdrhistogram_c--0.11.9.arm64_tahoe.bottle.1.tar.gz
+🍺  /opt/homebrew/Cellar/hdrhistogram_c/0.11.9: 22 files, 172.8KB
+==> Installing mongodb/brew/mongodb-community dependency: libnghttp2
+==> Pouring libnghttp2--1.68.1.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libnghttp2/1.68.1: 14 files, 757KB
+==> Installing mongodb/brew/mongodb-community dependency: libnghttp3
+==> Pouring libnghttp3--1.15.0.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libnghttp3/1.15.0: 20 files, 603.6KB
+==> Installing mongodb/brew/mongodb-community dependency: libngtcp2
+==> Pouring libngtcp2--1.22.1.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libngtcp2/1.22.1: 21 files, 1.3MB
+==> Installing mongodb/brew/mongodb-community dependency: libuv
+==> Pouring libuv--1.52.1.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libuv/1.52.1: 35 files, 1.3MB
+==> Installing mongodb/brew/mongodb-community dependency: llhttp
+==> Pouring llhttp--9.3.1.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/llhttp/9.3.1: 13 files, 160.2KB
+==> Installing mongodb/brew/mongodb-community dependency: simdutf
+==> Pouring simdutf--8.2.0.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/simdutf/8.2.0: 61 files, 1.9MB
+==> Installing mongodb/brew/mongodb-community dependency: merve
+==> Pouring merve--1.2.2.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/merve/1.2.2: 19 files, 154.4KB
+==> Installing mongodb/brew/mongodb-community dependency: nbytes
+==> Pouring nbytes--0.1.4.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/nbytes/0.1.4: 9 files, 90.4KB
+==> Installing mongodb/brew/mongodb-community dependency: simdjson
+==> Pouring simdjson--4.6.2.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/simdjson/4.6.2: 19 files, 8.0MB
+==> Installing mongodb/brew/mongodb-community dependency: node
+==> Pouring node--25.9.0_2.arm64_tahoe.bottle.tar.gz
+Warning: These files were overwritten during the `brew link` step:
+/opt/homebrew/bin/npm
+/opt/homebrew/bin/npx
+
+They have been backed up to: /Users/vikashkumar/Library/Caches/Homebrew/Backup
+==> Summary
+🍺  /opt/homebrew/Cellar/node/25.9.0_2: 1,889 files, 78.0MB
+==> Installing mongodb/brew/mongodb-community dependency: mongosh
+==> Pouring mongosh--2.8.2.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/mongosh/2.8.2: 16,805 files, 107.8MB
+==> Installing mongodb/brew/mongodb-community
+==> Caveats
+To start mongodb/brew/mongodb-community now and restart at login:
+  brew services start mongodb/brew/mongodb-community
+==> Summary
+🍺  /opt/homebrew/Cellar/mongodb-community/8.2.7: 12 files, 256.7MB, built in 2 seconds
+==> Running `brew cleanup mongodb-community`...
+Disable this behaviour by setting `HOMEBREW_NO_INSTALL_CLEANUP=1`.
+Hide these hints with `HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
+==> Caveats
+==> mongodb-community
+To start mongodb/brew/mongodb-community now and restart at login:
+  brew services start mongodb/brew/mongodb-community
+vikashkumar@Vikashs-MacBook-Air MindConnect % brew services start mongodb-community
+==> Successfully started `mongodb-community` (label: homebrew.mxcl.mongodb-community)
+vikashkumar@Vikashs-MacBook-Air MindConnect % echo "JWT_SECRET=$(openssl rand -base64 32)"
+vikashkumar@Vikashs-MacBook-Air MindConnect % mongosh
+Current Mongosh Log ID:	69e3b5323b0fe5e4f1654250
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.8.2
+Using MongoDB:		8.2.7
+Using Mongosh:		2.8.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2026-04-18T22:13:39.800+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use mindconnect
+switched to db mindconnect
+mindconnect> db.users.insertOne({
+|   name: "vikash",
+|   email: "vikash@test.com"
+| })
+{
+  acknowledged: true,
+  insertedId: ObjectId('69e3b54c3b0fe5e4f1654251')
+}
+mindconnect> db.users.find()
+[
+  {
+    _id: ObjectId('69e3b54c3b0fe5e4f1654251'),
+    name: 'vikash',
+    email: 'vikash@test.com'
+  }
+]
+mindconnect> show dbs
+admin        40.00 KiB
+config       12.00 KiB
+local        40.00 KiB
+mindconnect   8.00 KiB
+mindconnect> 
+####
+🧠 Why mindconnect appeared automatically
+
+You actually did mention it here:
+
+use mindconnect
+
+👉 This line is the key.
+
+🔍 What use mindconnect really does
+use mindconnect
+
+This does NOT create the database immediately.
+
+It only:
+
+switches your context to a database named mindconnect
+prepares MongoDB to use it
+⚠️ When is the DB actually created?
+
+MongoDB creates a database only when you insert data into it.
+
+👉 In your case:
+
+db.users.insertOne({
+  name: "vikash",
+  email: "vikash@test.com"
+})
+
+This is the moment where:
+
+mindconnect DB gets created ✅
+users collection gets created ✅
+document gets inserted ✅
+🔁 Full Flow (What happened internally)
+Step 1:
+use mindconnect
+
+➡️ Just switches context (no DB yet)
+
+Step 2:
+db.users.insertOne({...})
+
+➡️ MongoDB:
+
+creates DB → mindconnect
+creates collection → users
+inserts document
+Step 3:
+show dbs
+
+➡️ Now it appears:
+
+mindconnect
+🧪 Proof (Try this)
+1. Switch to new DB
+use testdb123
+2. Check DBs
+show dbs
+
+👉 You will NOT see testdb123
+
+3. Insert data
+db.test.insertOne({a:1})
+4. Check again
+show dbs
+
+👉 Now testdb123 appears ✅
+
+📌 Key Concept (Important for your backend work)
+
+MongoDB is schema-less & lazy-creating:
+
+Action	Result
+use dbname	Just selects DB
+insert data	DB gets created
+no data	DB not visible
+🔗 How this relates to your Node.js app
+
+When you use:
+
+MONGODB_URI=mongodb://localhost:27017/mindconnect
+
+👉 Your app:
+
+connects to mindconnect
+if DB doesn't exist → MongoDB creates it automatically when first insert happens
+🚀 Real Dev Insight
+
+This is why in production:
+
+You don’t manually create DBs
+Your app initializes them
+⚠️ Small Gotcha
+
+If DB is empty:
+
+show dbs may not display it
