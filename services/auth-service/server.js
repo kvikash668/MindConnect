@@ -1,20 +1,31 @@
-require('dotenv').config({ path: '../../.env' });
+'use strict';
+
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
-const authRoutes = require('./routes/auth');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
 
-const app = express();
-const PORT = process.env.AUTH_SERVICE_PORT || 5001;
+const router = express.Router();
 
-app.use(cors());
-app.use(express.json());
+// Middleware for CORS, logging, and body parsing
+router.use(cors());
+router.use(morgan('dev'));
+router.use(bodyParser.json({ limit: '10mb' })); // increased limit
+router.use(bodyParser.urlencoded({ limit: '10mb', extended: true })); // increased limit
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/mindconnect')
-  .then(() => console.log('✅ Auth Service: MongoDB connected'))
-  .catch(err => console.error('❌ MongoDB error:', err));
+// Example middleware for error handling
+router.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
+});
 
-app.use('/', authRoutes);
-app.get('/health', (req, res) => res.json({ service: 'auth', status: 'ok' }));
+// Auth routes can be mounted here
+router.get('/', (req, res) => {
+    res.send('Auth service is up and running!');
+});
 
-app.listen(PORT, () => console.log(`🔐 Auth Service running on port ${PORT}`));
+// Mount routes at /api/auth
+const authService = express();
+authService.use('/api/auth', router);
+
+module.exports = authService;
