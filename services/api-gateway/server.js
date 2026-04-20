@@ -1,28 +1,23 @@
-// server.js
-
 const express = require('express');
-const timeout = require('connect-timeout');
-const bodyParser = require('body-parser');
+const httpProxy = require('http-proxy');
 
 const app = express();
+const proxy = httpProxy.createProxyServer();
 
-// Middleware to handle request bodies
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Timeout configuration
-app.use(timeout('5s'));
-
-app.post('/your-endpoint', (req, res) => {
-    // Handle your request here
-    res.send('Request received');
+// Define service routes
+app.use('/service1', function(req, res) {
+    proxy.web(req, res, { target: 'http://localhost:3001' });
 });
 
-app.use((req, res, next) => {
-    res.status(408).send('Request Timeout');
+app.use('/service2', function(req, res) {
+    proxy.web(req, res, { target: 'http://localhost:3002' });
 });
 
-const PORT = process.env.PORT || 3000;
+app.use('/service3', function(req, res) {
+    proxy.web(req, res, { target: 'http://localhost:3003' });
+});
+
+const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`API Gateway is running on port ${PORT}`);
 });
