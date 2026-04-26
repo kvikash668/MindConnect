@@ -1,0 +1,5 @@
+apiVersion: v2
+name: user-service
+description: MindConnect User Service
+type: application
+version: 1.0.0
