@@ -10,15 +10,16 @@ env:
   REGISTRY: ${{ secrets.ACR_LOGIN_SERVER }}
 
 jobs:
+
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4        # updated
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4      # updated
         with:
-          node-version: '18'
+          node-version: '20'             # upgraded 18→20
           cache: 'npm'
 
       - name: Install dependencies
@@ -37,10 +38,10 @@ jobs:
         service: [auth-service, user-service, social-service, payment-service, api-gateway]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4        # updated
 
       - name: Login to ACR
-        uses: azure/docker-login@v1
+        uses: azure/docker-login@v2      # v1→v2 fixes Node.js warning
         with:
           login-server: ${{ secrets.ACR_LOGIN_SERVER }}
           username: ${{ secrets.ACR_USERNAME }}
@@ -57,5 +58,5 @@ jobs:
           docker push $IMAGE:${{ github.sha }}
           docker push $IMAGE:latest
 
-      - name: Summary
-        run: echo "Pushed ${{ matrix.service }}:${{ github.sha }} to ACR"
+      - name: Done
+        run: echo "Pushed ${{ matrix.service }}:${{ github.sha }}"
